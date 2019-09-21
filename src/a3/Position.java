@@ -20,6 +20,15 @@ package a3;
 public interface Position {
 	int getX();
 	int getY();
-	int getManhattanDistanceTo(Position p);
 	
+	
+     default int getManhattanDistanceTo(Position p) {
+	
+		
+		return (Math.abs((p.getX()) - (this.getX())) + Math.abs((p.getY()) - (this.getY())));
+	}
+	
+
+
 }
+

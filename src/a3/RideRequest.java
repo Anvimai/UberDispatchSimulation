@@ -37,6 +37,14 @@ public interface RideRequest {
 	Position getDestination();
 	boolean getIsComplete();
 	CompletedRide complete(Driver driver);
-	int getRideTime();
+	
+	
+	default public int getRideTime() {
+		// TODO Auto-generated method stub
+		
+		return (Math.abs((getClientPosition().getX()) - (getDestination().getX()))
+					+ Math.abs((getClientPosition().getY()) - ( getDestination().getY())));
+		
+	}
 
 }

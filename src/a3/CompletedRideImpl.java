@@ -61,19 +61,16 @@ public class CompletedRideImpl implements CompletedRide {
 	}
 	
 	
-	@Override
 	public RideRequest getRequest() {
 		// TODO Auto-generated method stub
 		return request;
 	}
 
-	@Override
 	public Driver getDriver() {
 		// TODO Auto-generated method stub
 		return driver;
 	}
 
-	@Override
 	public int getWaitTime() {
 		// TODO Auto-generated method stub
 		

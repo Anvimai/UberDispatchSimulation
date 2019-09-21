@@ -58,7 +58,6 @@ public class DriverImpl implements Driver {
 
 	}
 
-	@Override
 	public String getFirstName() {
 		// TODO Auto-generated method stub
 		
@@ -66,7 +65,6 @@ public class DriverImpl implements Driver {
 		return firstName;
 	}
 
-	@Override
 	public String getLastName() {
 		// TODO Auto-generated method stub
 		return lastName;
@@ -74,19 +72,16 @@ public class DriverImpl implements Driver {
 
 
 
-	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
 		return idNumber;
 	}
 
-	@Override
 	public Vehicle getVehicle() {
 		// TODO Auto-generated method stub
 		return vehicle;
 	}
 
-	@Override
 	public void setVehicle(Vehicle v) {
 		// TODO Auto-generated method stub
 		

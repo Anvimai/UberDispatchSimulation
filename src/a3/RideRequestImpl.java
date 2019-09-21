@@ -25,19 +25,16 @@ public class RideRequestImpl implements RideRequest{
 		
 	}
 
-	@Override
 	public Position getClientPosition() {
 		// TODO Auto-generated method stub
 		return clientPosition;
 	}
 
-	@Override
 	public Position getDestination() {
 		// TODO Auto-generated method stub
 		return destination;
 	}
 
-	@Override
 	public boolean getIsComplete() {
 		// TODO Auto-generated method stub
 		
@@ -48,7 +45,6 @@ public class RideRequestImpl implements RideRequest{
 		return comp ;
 	}
 
-	@Override
 	public CompletedRide complete( Driver driver) {
 	// *    If the RideRequest has not yet been completed, the method should:
 	//	 *    - update the request to indicate that the request has been completed,

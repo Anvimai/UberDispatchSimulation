@@ -27,8 +27,14 @@ package a3;
 public interface Driver {
 	String getFirstName();
 	String getLastName();
-	String getFullName();
+	
 	int getID();
 	Vehicle getVehicle();
 	void setVehicle(Vehicle v);
+	
+	
+	default public String getFullName() {
+		// TODO Auto-generated method stub
+		return getFirstName() + " " + getLastName();
+	}
 }
