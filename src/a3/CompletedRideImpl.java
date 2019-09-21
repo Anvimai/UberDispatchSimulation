@@ -51,6 +51,13 @@ public class CompletedRideImpl implements CompletedRide {
 		this.driver = driver; 
 		this.initialPosition = driver.getVehicle().getPosition();  
 		
+		if(request == null) {
+				throw new RuntimeException("Expected RideRequest object: RideRequest null");
+			}
+		
+			
+		
+		
 	}
 	
 	
@@ -76,73 +83,9 @@ public class CompletedRideImpl implements CompletedRide {
 		
 	}
 
-	@Override
-	public int getTotalTime() {
-		// TODO Auto-generated method stub
 
-	
-		return  (this.initialPosition.getManhattanDistanceTo(request.getClientPosition()))
-						+	(this.request.getClientPosition().getManhattanDistanceTo(request.getDestination()));
-	}
 
-	@Override
-	public double getCost() {
-		// TODO Auto-generated method stub
-		// Calculates the cost of providing the ride. This cost is calculated as
-		//one-half of the ride time summed with one-tenth of the wait time. 
-		//Note: while wait and ride times are integer values, cost is a real value.
-		
-		return (((this.getTotalTime()-this.getWaitTime())/2.0) + (this.getWaitTime()/10.0));
-	}
 
-	@Override
-	public double getPrice() {
-		// TODO Auto-generated method stub
-		//Calculates the price charged for the ride. This price is a function
-		//of the ride time based on the wait time as follows:
-		//Wait Time		Price of Ride
-		//< 25			two and one-half times the ride time
-		//25 to 49		twice the ride time
-		//50 to 99		equal to ride time
-		// >= 100		half of ride time
-		
-		if(this.getWaitTime()<25) {
-			return (this.getTotalTime()-this.getWaitTime())*2.5;
-		}
-		if(this.getWaitTime()>= 25 && this.getWaitTime()<=49) {
-			return (this.getTotalTime()-this.getWaitTime())*2.0;
-		}
-		if(this.getWaitTime()>= 50 && this.getWaitTime()<=99) {
-			return (this.getTotalTime()-this.getWaitTime()); 
-		}
-		if(this.getWaitTime()>=100) {
-			return (this.getTotalTime()-this.getWaitTime())/2.0;
-		}
-		return 0; 
-		
-	}
 
-	@Override
-	public double getProfit() {
-		// TODO Auto-generated method stub
-		if(this.getWaitTime()<25) {
-			return (((this.getTotalTime()-this.getWaitTime())*2.5)
-						-(((this.getTotalTime()-this.getWaitTime())/2.0) + (this.getWaitTime()/10.0)));
-		}
-		if(this.getWaitTime()>= 25 && this.getWaitTime()<=49) {
-			return (((this.getTotalTime()-this.getWaitTime())*2.0)
-						-(((this.getTotalTime()-this.getWaitTime())/2.0)+(this.getWaitTime()/10.0)));
-		}
-		if(this.getWaitTime()>= 50 && this.getWaitTime()<=99) {
-			return ((this.getTotalTime()-this.getWaitTime())
-						-(((this.getTotalTime()-this.getWaitTime())/2.0)+this.getWaitTime()/10.0)); 
-		}
-		if(this.getWaitTime()>=100) {
-			return (((this.getTotalTime()-this.getWaitTime())/2.0)
-						-(((this.getTotalTime()-this.getWaitTime())/2.0)+this.getWaitTime()/10.0));
-		}
-		return 0; 
-		
-	}
 
 }

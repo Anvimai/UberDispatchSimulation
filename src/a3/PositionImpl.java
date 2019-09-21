@@ -41,15 +41,5 @@ public class PositionImpl implements Position {
 		
 		return y;
 	}
-	public int getManhattanDistanceTo(Position p) {
-		
-		int x = getX();
-		int y = getY();
-		int x2 = p.getX();
-		int y2 = p.getY();
-		
-		
-		return (Math.abs((x2) - (x)) + Math.abs((y2) - (y)));
-	}
-
+	
 }

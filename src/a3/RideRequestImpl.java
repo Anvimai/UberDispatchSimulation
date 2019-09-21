@@ -4,8 +4,7 @@ public class RideRequestImpl implements RideRequest{
 	
 	private Position clientPosition;
 	private Position destination;
-	boolean comp = false; 
-	Driver driver; 
+	private boolean comp = false; 
 	
 	
 	
@@ -14,6 +13,14 @@ public class RideRequestImpl implements RideRequest{
 		this.clientPosition = clientPosition; 
 		this.destination = destination; 
 		
+		
+		if(clientPosition==null) {
+			throw new RuntimeException("Expected client position");
+		}
+		
+		if(destination==null) {
+			 throw new RuntimeException("Expected destination");
+		 }
 		
 		
 	}
@@ -91,14 +98,8 @@ public class RideRequestImpl implements RideRequest{
 		
 	}
 
-	@Override
-	public int getRideTime() {
-		// TODO Auto-generated method stub
-		
-		return (Math.abs((clientPosition.getX()) - (destination.getX()))
-					+ Math.abs((clientPosition.getY()) - ( destination.getY())));
-		
-	}
+
+
 	
 	
 	

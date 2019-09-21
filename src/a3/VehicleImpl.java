@@ -40,6 +40,19 @@ public class VehicleImpl implements Vehicle {
 	 this.model = model;
 	 this.plate = plate; 
 	 this.position = position;
+	 
+	 if(make==null) {
+		 throw new RuntimeException("Expected vehicle make");
+	 }
+	 if(model==null) {
+		 throw new RuntimeException("Expected vehicle model");
+	 }
+	 if(plate==null) {
+		 throw new RuntimeException("Expected vehicle plate");
+	 }
+	 if(position==null) {
+		 throw new RuntimeException("Expected vehicle position");
+	 }
 		
 		
 	}
@@ -55,7 +68,7 @@ public class VehicleImpl implements Vehicle {
 		return plate;
 	}
 	public int getMileage() {
-		return 0;
+		return mileage;
 	}
 	public Position getPosition() {
 		return position;
@@ -64,13 +77,8 @@ public class VehicleImpl implements Vehicle {
 	}
 	public void moveToPosition(Position p) {
 		
-		int x = position.getX();
-		int y = position.getY();
-		int x2 = p.getX();
-		int y2 = p.getY();
 		
-		
-		 mileage = (Math.abs(( p.getX()) - (position.getX())) + Math.abs((y2) - (position.getY())));
+		 mileage += this.getPosition().getManhattanDistanceTo(p);
 		 position = p;
 		 
 		//System.out.println(mileage);

@@ -28,7 +28,7 @@ public class DriverImpl implements Driver {
 	
 	private String firstName = "";
 	private String lastName = "";
-	private String fullName = "";
+	
 	private int idNumber =0;
 	private Vehicle vehicle; 
 	
@@ -39,12 +39,30 @@ public class DriverImpl implements Driver {
 		this.idNumber = id;
 		this.vehicle = vehicle;
 		
+		if(first==null) {
+			throw new RuntimeException("Empty first name value");
+		}
 		
+		if(last==null) {
+				throw new RuntimeException("Empty last name value");
+		}
+		
+		if(id == 0) {
+			throw new RuntimeException("Expected id input");
+		}
+		
+		if(vehicle == null) {
+			throw new RuntimeException("Expected vehicle input");
+		}
+		
+
 	}
 
 	@Override
 	public String getFirstName() {
 		// TODO Auto-generated method stub
+		
+		
 		return firstName;
 	}
 
@@ -54,11 +72,7 @@ public class DriverImpl implements Driver {
 		return lastName;
 	}
 
-	@Override
-	public String getFullName() {
-		// TODO Auto-generated method stub
-		return fullName;
-	}
+
 
 	@Override
 	public int getID() {
