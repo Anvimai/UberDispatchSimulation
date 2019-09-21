@@ -29,7 +29,7 @@ public class DriverImpl implements Driver {
 	private String firstName = "";
 	private String lastName = "";
 	
-	private int idNumber =0;
+	private int idNumber = 0;
 	private Vehicle vehicle; 
 	
 	public DriverImpl(String first, String last, int id, Vehicle vehicle) {
@@ -47,9 +47,9 @@ public class DriverImpl implements Driver {
 				throw new RuntimeException("Empty last name value");
 		}
 		
-		if(id == 0) {
-			throw new RuntimeException("Expected id input");
-		}
+		//if(id == 0 ) {
+			//throw new RuntimeException("Expected id input");
+		//}
 		
 		if(vehicle == null) {
 			throw new RuntimeException("Expected vehicle input");
