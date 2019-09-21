@@ -42,7 +42,37 @@ public class Simulation {
 	private Random _rng;
 	private Dispatcher _dispatcher;
 	
+	
+	public Simulation(long seed, int request_count, Dispatcher dispatcher,int gridwidth, 
+							int gridheight, int hotspotcount, int drivercount) {
+		
+		_gridWidth = gridwidth;
+		_gridHeight = gridheight;
+		_hotSpots = new Position[hotspotcount];
+		_rideLog = new ArrayList<CompletedRide>();
+		_rng = new Random(seed);
+		_dispatcher = dispatcher;
+		
+		for (int i=0; i<_hotSpots.length; i++) {
+			_hotSpots[i] = createRandomPosition();
+		}
+		
+		Driver[] drivers = new Driver[drivercount];
+		
+		for (int i=0; i<drivers.length; i++) {
+			drivers[i] = createRandomDriver(i);
+		}
+
+		
+		for (int r=0; r<request_count; r++) {
+			RideRequest request = createRandomRequest();
+			CompletedRide ride = request.complete(_dispatcher.chooseDriver(drivers, request));
+			_rideLog.add(ride);
+		}
+		
+	}
 	public Simulation(long seed, int request_count, Dispatcher dispatcher) {
+		
 		_gridWidth = DEFAULT_GRID_WIDTH;
 		_gridHeight = DEFAULT_GRID_HEIGHT;
 		_hotSpots = new Position[DEFAULT_HOTSPOT_COUNT];
