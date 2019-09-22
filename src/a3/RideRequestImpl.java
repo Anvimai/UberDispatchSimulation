@@ -5,6 +5,7 @@ public class RideRequestImpl implements RideRequest{
 	private Position clientPosition;
 	private Position destination;
 	private boolean comp = false; 
+	private CompletedRide ride;
 	
 	
 	
@@ -56,7 +57,9 @@ public class RideRequestImpl implements RideRequest{
 	//	 *    
 	//	 *    If the RideRequest has already been completed, simply returns
 	//	 *    the CompletedRide object describing the completed ride.		
-		 
+		
+		
+		
 		
 		if (this.getIsComplete()!=true) {
 			
@@ -65,7 +68,7 @@ public class RideRequestImpl implements RideRequest{
 		comp = true;
 		
 		
-		 CompletedRide initialRide = new CompletedRideImpl(this, driver);
+		CompletedRide initialRide = new CompletedRideImpl(this, driver);
 		
 			
 		    driver.getVehicle().moveToPosition(clientPosition);
@@ -73,7 +76,7 @@ public class RideRequestImpl implements RideRequest{
 			
 		
 		
-	
+			ride = initialRide;
 			return initialRide;
 			
 			
@@ -83,10 +86,11 @@ public class RideRequestImpl implements RideRequest{
 		
 	}
 		
+		
 
 		
 			
-			return new CompletedRideImpl(this,driver);//new CompletedRideImpl(this, driver);
+			return ride;
 		
 		
 	
